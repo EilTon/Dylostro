@@ -7,11 +7,11 @@ public class GameManager : MonoBehaviour
 	public int _numberCase;
 
 	List<string> _cases;
-	BoardGenerator _boardGenerator;
+	Board _board;
 
 	private void Start()
 	{
-		_boardGenerator = new BoardGenerator(_numberCase);
-		_boardGenerator.GenerateBoard();
+		_board = new Board();
+		_board.GenerateBoard(_numberCase);
 	}
 }
