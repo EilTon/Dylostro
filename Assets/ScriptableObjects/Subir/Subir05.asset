@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db6ae9ab30b50c94ca78429ae044129a, type: 3}
-  m_Name: Imitation
+  m_Name: Subir05
   m_EditorClassIdentifier: 
-  _category: Imitation
-  _description: DescrosgiojviUh
-  _points: 3
+  _category: Subir
+  _description: ', tu fais les 3 tours suivants avec des chaussettes sur les mains!'
+  _points: 1
   _validation: 0
+  _numberPlayer: 1

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db6ae9ab30b50c94ca78429ae044129a, type: 3}
-  m_Name: Alcool
+  m_Name: Alcool04
   m_EditorClassIdentifier: 
-  _category: alcool
-  _description: description1
+  _category: Alcool
+  _description: ", bois un m\xE9lange des autres joueurs!"
   _points: 3
   _validation: 0
+  _numberPlayer: 1
