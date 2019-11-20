@@ -7,9 +7,9 @@ public class Case : MonoBehaviour
 	public ChallengeScriptableObject _challenge;
 	public List<Player> _players;
 
-	private void Start()
+	public Case()
 	{
-		ChallengeToPlayer();
+
 	}
 
 	void ChallengeToPlayer()
