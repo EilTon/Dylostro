@@ -5,7 +5,7 @@ using UnityEngine;
 public class Case : MonoBehaviour
 {
 	public ChallengeScriptableObject _challenge;
-	public List<Player> _players;
+	public List<GameObject> _players;
 
 	public Case()
 	{
