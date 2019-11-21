@@ -28,4 +28,5 @@ public class Case : MonoBehaviour
 			Debug.Log(_players[0].name+ " " + _challenge._description.ToString());
 		}
 	}
+
 }
