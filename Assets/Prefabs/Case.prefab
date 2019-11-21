@@ -91,5 +91,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3844dbfa1c9c7204fb6a41039c42ddb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _challenge: {fileID: 11400000, guid: 13872013e0fcc0f48a46f16b8662ddc4, type: 2}
+  _challenge: {fileID: 11400000, guid: a609da1fb30fdd44a9d854cd7613908f, type: 2}
   _players: []
