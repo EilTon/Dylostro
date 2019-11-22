@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 {
 
 	#region Declarations publique
-
 	public string _pseudo;
 	public int _score;
 	public List<string> _constraints;

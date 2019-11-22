@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Board : MonoBehaviour
 {
 	public GameObject _prefabCase;
 	public GameObject _prefabPlayer;
-	public List<Case> _cases;
+	public GameObject _popup;
 	public List<ChallengeScriptableObject> _challenges;
 	public List<GameObject> _players;
+	public List<GameObject> _cases;
 	public float _offsetX = 1.5f;
 	int _order = 0;
-	bool _move = false;
 
 	private void Awake()
 	{
 		FindObjectOfType<GameManager>().generateBoard += GenerateBoardEventHandler;
 		FindObjectOfType<ButtonEventManager>().throwDice += ThrowDiceEventHandler;
 	}
-
 
 	void GenerateBoardEventHandler(object sender, GameManager.GenerateBoardEventArgs e) // fonction de l'event GenerateBoard
 	{
@@ -39,26 +39,18 @@ public class Board : MonoBehaviour
 	{
 		float numberOfDice = UnityEngine.Random.Range(1, 7);
 		_players[_order].GetComponent<Player>().MovePlayer(numberOfDice);
-		if (_order >= _players.Count -1)
-		{
-			_order = 0;
-		}
-		else
-		{
-			++_order;
-		}
+		CheckCase(_players[_order]);
+		
 		
 	}
 
-
 	void CreateCase(int i)
 	{
-		Instantiate(_prefabCase);
-		_prefabCase.transform.position = new Vector2(0 + (i * _offsetX), 0);
-		Case cell = _prefabCase.GetComponent<Case>();
+		GameObject cellGo = Instantiate(_prefabCase);
+		cellGo.transform.position = new Vector2(0 + (i * _offsetX), 0);
+		Case cell = cellGo.GetComponent<Case>();
 		cell._challenge = RandomChallenge();
-		_cases.Add(cell);
-
+		_cases.Add(cellGo);
 	}
 
 	void CreatePlayer(string pseudo, int i)
@@ -68,7 +60,38 @@ public class Board : MonoBehaviour
 		Player player = playerGo.GetComponent<Player>();
 		player._pseudo = pseudo;
 		_players.Add(playerGo);
-		_cases[0]._players.Add(playerGo);
+	}
+
+	void CheckCase(GameObject player)
+	{
+		ChallengeScriptableObject challenge = _cases.Where(x => x.transform.position.x == player.transform.position.x).FirstOrDefault().GetComponent<Case>()._challenge;
+		if(challenge._numberPlayer>1)
+		{
+			if (_order >= _players.Count - 1)
+			{
+				Debug.Log(player.GetComponent<Player>()._pseudo + ", " + _players[0].GetComponent<Player>()._pseudo + "" + challenge._description);
+				
+			}
+			else
+			{
+				Debug.Log(player.GetComponent<Player>()._pseudo + ", " + _players[_order + 1].GetComponent<Player>()._pseudo + "" + challenge._description);
+			}
+			
+			
+		}
+		else
+		{
+			Debug.Log(player.GetComponent<Player>()._pseudo+""+challenge._description);
+		}
+		if (_order >= _players.Count - 1)
+		{
+			_order = 0;
+		}
+		else
+		{
+			++_order;
+		}
+		_popup.SetActive(true);
 	}
 
 	ChallengeScriptableObject RandomChallenge()

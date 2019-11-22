@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Subir03
   m_EditorClassIdentifier: 
   _category: Subir
-  _description: ", toi palrer comme personne pr\xE9historique pendant 1 tour! "
+  _description: ", toi parler comme personne pr\xE9historique pendant 1 tour! "
   _points: 1
   _validation: 0
   _numberPlayer: 1
