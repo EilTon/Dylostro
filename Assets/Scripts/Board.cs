@@ -40,14 +40,12 @@ public class Board : MonoBehaviour
 		float numberOfDice = UnityEngine.Random.Range(1, 7);
 		_players[_order].GetComponent<Player>().MovePlayer(numberOfDice);
 		CheckCase(_players[_order]);
-		
-		
 	}
 
 	void CreateCase(int i)
 	{
 		GameObject cellGo = Instantiate(_prefabCase);
-		cellGo.transform.position = new Vector2(0 + (i * _offsetX), 0);
+		cellGo.transform.position = new Vector3(0 + (i * _offsetX), 0,91);
 		Case cell = cellGo.GetComponent<Case>();
 		cell._challenge = RandomChallenge();
 		_cases.Add(cellGo);
@@ -56,7 +54,7 @@ public class Board : MonoBehaviour
 	void CreatePlayer(string pseudo, int i)
 	{
 		GameObject playerGo = Instantiate(_prefabPlayer);
-		playerGo.transform.position = new Vector2(0, 1);
+		playerGo.transform.position = new Vector3(0, 1,91);
 		Player player = playerGo.GetComponent<Player>();
 		player._pseudo = pseudo;
 		_players.Add(playerGo);
@@ -64,24 +62,24 @@ public class Board : MonoBehaviour
 
 	void CheckCase(GameObject player)
 	{
+		string textPopUp;
 		ChallengeScriptableObject challenge = _cases.Where(x => x.transform.position.x == player.transform.position.x).FirstOrDefault().GetComponent<Case>()._challenge;
 		if(challenge._numberPlayer>1)
 		{
 			if (_order >= _players.Count - 1)
 			{
-				Debug.Log(player.GetComponent<Player>()._pseudo + ", " + _players[0].GetComponent<Player>()._pseudo + "" + challenge._description);
+				textPopUp= player.GetComponent<Player>()._pseudo + ", " + _players[0].GetComponent<Player>()._pseudo + "" + challenge._description;
 				
 			}
 			else
 			{
-				Debug.Log(player.GetComponent<Player>()._pseudo + ", " + _players[_order + 1].GetComponent<Player>()._pseudo + "" + challenge._description);
+				textPopUp=player.GetComponent<Player>()._pseudo + ", " + _players[_order + 1].GetComponent<Player>()._pseudo + "" + challenge._description;
 			}
-			
 			
 		}
 		else
 		{
-			Debug.Log(player.GetComponent<Player>()._pseudo+""+challenge._description);
+			textPopUp=player.GetComponent<Player>()._pseudo+""+challenge._description;
 		}
 		if (_order >= _players.Count - 1)
 		{
@@ -91,7 +89,7 @@ public class Board : MonoBehaviour
 		{
 			++_order;
 		}
-		_popup.SetActive(true);
+		_popup.GetComponent<Popup>().Show(textPopUp);
 	}
 
 	ChallengeScriptableObject RandomChallenge()

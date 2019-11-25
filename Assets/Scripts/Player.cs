@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
 	public void MovePlayer(float numberOfDice)
 	{
-		Vector3 move = new Vector3((transform.position.x + numberOfDice) * 1.5f, 1, 0);
+		Vector3 move = new Vector3((transform.position.x + numberOfDice) * 1.5f, 1, transform.position.z);
 		transform.position = move;
 	}
 

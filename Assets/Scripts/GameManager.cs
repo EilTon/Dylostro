@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
 	private void Start()
 	{
+		
 		GenerateBoard(new GenerateBoardEventArgs(){ caseToGenerate = _numberCase, pseudosPlayer = _pseudos });
 	}
 }
