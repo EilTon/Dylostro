@@ -66,7 +66,7 @@ public class Board : MonoBehaviour
 		ChallengeScriptableObject challenge = _cases.Where(x => x.transform.position.x == player.transform.position.x).FirstOrDefault().GetComponent<Case>()._challenge;
 		if(challenge._numberPlayer>1)
 		{
-			if (_order >= _players.Count - 1)
+			if (_order == _players.Count - 1)
 			{
 				textPopUp= player.GetComponent<Player>()._pseudo + ", " + _players[0].GetComponent<Player>()._pseudo + "" + challenge._description;
 				
