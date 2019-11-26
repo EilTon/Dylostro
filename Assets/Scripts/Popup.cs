@@ -78,7 +78,6 @@ public class Popup : MonoBehaviour
 			}
 			int randomNumber = UnityEngine.Random.Range(0, _constraints.Count);
 			player._constraints.Add(_constraints[randomNumber]._description);
-			Debug.Log(_constraints[randomNumber]._description);
 		}
 	}
 
