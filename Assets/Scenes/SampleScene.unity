@@ -893,8 +893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textShow: {fileID: 0}
-  _noButton: {fileID: 0}
-  _yesButton: {fileID: 0}
 --- !u!1 &1681466387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,8 +1008,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textShow: {fileID: 0}
-  _noButton: {fileID: 0}
-  _yesButton: {fileID: 0}
 --- !u!1 &1737051845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,8 +1234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textShow: {fileID: 0}
-  _noButton: {fileID: 0}
-  _yesButton: {fileID: 0}
 --- !u!1 &1832361767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,6 +1325,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 60987cb8a4490fa468d7ba94e720ea4e, type: 2}
   - {fileID: 11400000, guid: 32c70acaa5102204ebc62dcd964ad3a4, type: 2}
   - {fileID: 11400000, guid: 58424b0c2202169409e443d641599495, type: 2}
+  _constraints:
+  - {fileID: 11400000, guid: 23a8ed527d93ac54a9c4790504d51bf9, type: 2}
+  - {fileID: 11400000, guid: 50763216c7e61da43b983592cfbc87f6, type: 2}
+  - {fileID: 11400000, guid: b4dc3ef610827864d83f20339a0a9668, type: 2}
+  - {fileID: 11400000, guid: c3eaead5c743f884bbe32abe0075f2ae, type: 2}
+  - {fileID: 11400000, guid: 6d84bd212242d1d45b512bc543482b20, type: 2}
+  - {fileID: 11400000, guid: 01cf8eaf458ff314eb44010f751f1cea, type: 2}
+  - {fileID: 11400000, guid: 4d175642b4766104db8b6a5a42ff887f, type: 2}
+  - {fileID: 11400000, guid: 3c37711fbf22b374898c9e066d0796e6, type: 2}
+  - {fileID: 11400000, guid: 70036df55786d5f4f95daeb8beb5f5ea, type: 2}
   _players: []
   _cases: []
   _offsetX: 1.5
@@ -1426,5 +1430,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textShow: {fileID: 377204900}
-  _noButton: {fileID: 1762267163}
-  _yesButton: {fileID: 1353892739}

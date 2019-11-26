@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class Popup : MonoBehaviour
 {
 	public Text _textShow;
-	public Button _noButton;
-	public Button _yesButton;
+	
 
 	public event EventHandler<EventArgs> yesButton;
 	public event EventHandler<EventArgs> noButton;
@@ -18,6 +17,7 @@ public class Popup : MonoBehaviour
 
 	static GameObject _popup;
 	static List<Player> _players;
+	static List<ConstraintScriptableObject> _constraints;
 	static ChallengeScriptableObject _challenge;
 
 	private void Awake()
@@ -76,6 +76,9 @@ public class Popup : MonoBehaviour
 				player._score = player._score - _challenge._points;
 				Debug.Log(player._score);
 			}
+			int randomNumber = UnityEngine.Random.Range(0, _constraints.Count);
+			player._constraints.Add(_constraints[randomNumber]._description);
+			Debug.Log(_constraints[randomNumber]._description);
 		}
 	}
 
@@ -87,5 +90,10 @@ public class Popup : MonoBehaviour
 	public void SetChallenge(ChallengeScriptableObject challenge)
 	{
 		_challenge = challenge;
+	}
+
+	public void SetConstraints(List<ConstraintScriptableObject> constraints)
+	{
+		_constraints = constraints;
 	}
 }

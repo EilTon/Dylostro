@@ -10,6 +10,7 @@ public class Board : MonoBehaviour
 	public GameObject _prefabPlayer;
 	public GameObject _popup;
 	public List<ChallengeScriptableObject> _challenges;
+	public List<ConstraintScriptableObject> _constraints;
 	public List<GameObject> _players;
 	public List<GameObject> _cases;
 	public float _offsetX = 1.5f;
@@ -97,6 +98,7 @@ public class Board : MonoBehaviour
 			++_order;
 		}
 		Popup popup = _popup.GetComponent<Popup>();
+		popup.SetConstraints(_constraints);
 		popup.SetChallenge(challenge);
 		popup.SetPlayers(players);
 		popup.Show(textPopUp);
