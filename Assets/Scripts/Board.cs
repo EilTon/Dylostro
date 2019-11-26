@@ -63,17 +63,20 @@ public class Board : MonoBehaviour
 	void CheckCase(GameObject player)
 	{
 		string textPopUp;
+		List<Player> players = new List<Player>();
 		ChallengeScriptableObject challenge = _cases.Where(x => x.transform.position.x == player.transform.position.x).FirstOrDefault().GetComponent<Case>()._challenge;
-		if(challenge._numberPlayer>1)
+		players.Add(player.GetComponent<Player>());
+		if (challenge._numberPlayer>1)
 		{
 			if (_order == _players.Count - 1)
 			{
 				textPopUp= player.GetComponent<Player>()._pseudo + ", " + _players[0].GetComponent<Player>()._pseudo + "" + challenge._description;
-				
+				players.Add(_players[0].GetComponent<Player>());
 			}
 			else
 			{
 				textPopUp=player.GetComponent<Player>()._pseudo + ", " + _players[_order + 1].GetComponent<Player>()._pseudo + "" + challenge._description;
+				players.Add(_players[_order + 1].GetComponent<Player>());
 			}
 			
 		}
@@ -89,7 +92,10 @@ public class Board : MonoBehaviour
 		{
 			++_order;
 		}
-		_popup.GetComponent<Popup>().Show(textPopUp);
+		Popup popup = _popup.GetComponent<Popup>();
+		popup.SetChallenge(challenge);
+		popup.SetPlayers(players);
+		popup.Show(textPopUp);
 	}
 
 	ChallengeScriptableObject RandomChallenge()

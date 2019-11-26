@@ -13,10 +13,12 @@ public class Popup : MonoBehaviour
 	public event EventHandler<EventArgs> yesButton;
 	public event EventHandler<EventArgs> noButton;
 
-	List<Player> _players;
-	ChallengeScriptableObject _challenge;
+	
+	bool _isWin;
 
 	static GameObject _popup;
+	static List<Player> _players;
+	static ChallengeScriptableObject _challenge;
 
 	private void Awake()
 	{
@@ -33,11 +35,13 @@ public class Popup : MonoBehaviour
 
 	void YesButtonEventHandler(object sender, EventArgs e)
 	{
+		_isWin = true;
 		YesNoButton();
 	}
 
 	void NoButtonEventHandler(object sender, EventArgs e)
 	{
+		_isWin = false;
 		YesNoButton();
 	}
 
@@ -60,6 +64,19 @@ public class Popup : MonoBehaviour
 	public void YesNoButton()
 	{
 		_popup.SetActive(false);
+		foreach(Player player in _players)
+		{
+			if(_isWin)
+			{
+				player._score = player._score + _challenge._points;
+				Debug.Log(player._score);
+			}
+			else
+			{
+				player._score = player._score - _challenge._points;
+				Debug.Log(player._score);
+			}
+		}
 	}
 
 	public void SetPlayers(List<Player>players)
