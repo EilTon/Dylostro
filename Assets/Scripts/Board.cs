@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = System.Object;
 
 public class Board : MonoBehaviour
 {
@@ -34,6 +35,11 @@ public class Board : MonoBehaviour
 	{
 		FindObjectOfType<GameManager>().generateBoard += GenerateBoardEventHandler;
 		FindObjectOfType<ButtonEventManager>().throwDice += ThrowDiceEventHandler;
+		setChallengeFromResources("Alcool");
+		setChallengeFromResources("Chant");
+		setChallengeFromResources("Imitation");
+		setChallengeFromResources("Sport");
+		setChallengeFromResources("Subir");
 		_camera = Camera.main;
 	}
 	#region Event Handler
@@ -156,4 +162,14 @@ public class Board : MonoBehaviour
 		_textScore.text = _players[_order].GetComponent<Player>()._score.ToString() + " points";
 	}
 	#endregion
+
+	void setChallengeFromResources(string folder)
+	{
+		Object[] test;
+		test = Resources.LoadAll(folder, typeof(ChallengeScriptableObject));
+		foreach(Object obj in test)
+		{
+			_challenges.Add((ChallengeScriptableObject)obj);
+		}
+	}
 }

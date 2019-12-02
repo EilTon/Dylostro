@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.36239558, y: 0}
   m_AnchorMax: {x: 0.63430226, y: 0.127}
-  m_AnchoredPosition: {x: 0, y: 1.7999268}
+  m_AnchoredPosition: {x: 0, y: 1.7999191}
   m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164008721
@@ -1548,30 +1548,7 @@ MonoBehaviour:
     type: 3}
   _popup: {fileID: 2131778116}
   _offsetX: 1.5
-  _challenges:
-  - {fileID: 11400000, guid: 617fccaf11cdcfa42b5846691ca24628, type: 2}
-  - {fileID: 11400000, guid: 0cb6638eb5b68e04eb8e5e3622f2ab82, type: 2}
-  - {fileID: 11400000, guid: 8430eacb7c5dcdd4eba48eb836336aa4, type: 2}
-  - {fileID: 11400000, guid: a406a792250b10441910455e279c7ae7, type: 2}
-  - {fileID: 11400000, guid: a609da1fb30fdd44a9d854cd7613908f, type: 2}
-  - {fileID: 11400000, guid: 2d2b63572f29dfd4fa0f2f555e487f49, type: 2}
-  - {fileID: 11400000, guid: 6587d663da403794abdba069abff0ca7, type: 2}
-  - {fileID: 11400000, guid: ac6e0d506e9fb8c4d9011c9ff4fec951, type: 2}
-  - {fileID: 11400000, guid: 80e85ec343566294293ac5f8b410883b, type: 2}
-  - {fileID: 11400000, guid: 6acc3a9bc4554f346a3aaab76cd3a2d9, type: 2}
-  - {fileID: 11400000, guid: 9e1f6a9729671ee4691fba8121aecd12, type: 2}
-  - {fileID: 11400000, guid: 5ed67948924ffda478b9a5911b02e499, type: 2}
-  - {fileID: 11400000, guid: f114a87ebcea6e04ab9b26adbd861d9f, type: 2}
-  - {fileID: 11400000, guid: c4290b16121347647a3f302e35e6f4e2, type: 2}
-  - {fileID: 11400000, guid: 3f4f702c1e188b343b60476c6a7d8645, type: 2}
-  - {fileID: 11400000, guid: 13872013e0fcc0f48a46f16b8662ddc4, type: 2}
-  - {fileID: 11400000, guid: 361c8b1ff8cf33a41a43cbf85eddec99, type: 2}
-  - {fileID: 11400000, guid: d7e9ad16bea91d84b989012daa0fb30b, type: 2}
-  - {fileID: 11400000, guid: 4145fe8ae5d7a7246823d61cfd5f2998, type: 2}
-  - {fileID: 11400000, guid: 9eb7f68f7b7ff7b4db2db955c19cef01, type: 2}
-  - {fileID: 11400000, guid: 60987cb8a4490fa468d7ba94e720ea4e, type: 2}
-  - {fileID: 11400000, guid: 32c70acaa5102204ebc62dcd964ad3a4, type: 2}
-  - {fileID: 11400000, guid: 58424b0c2202169409e443d641599495, type: 2}
+  _challenges: []
   _constraints:
   - {fileID: 11400000, guid: 23a8ed527d93ac54a9c4790504d51bf9, type: 2}
   - {fileID: 11400000, guid: 50763216c7e61da43b983592cfbc87f6, type: 2}
@@ -1682,7 +1659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2131778117
 RectTransform:
   m_ObjectHideFlags: 0
