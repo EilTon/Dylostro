@@ -7,10 +7,6 @@ public class Case : MonoBehaviour
 	public ChallengeScriptableObject _challenge;
 	public List<GameObject> _players;
 
-	public Case()
-	{
-
-	}
 
 	void ChallengeToPlayer()
 	{

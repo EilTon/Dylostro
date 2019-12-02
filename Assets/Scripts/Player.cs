@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 	public void MovePlayer(float numberOfDice,Vector3 finalCase,float offsetX)
 	{
 		Vector3 move = new Vector3(transform.position.x + (numberOfDice * offsetX), 1, transform.position.z);
-		if(move.x > finalCase.x)
+		while(move.x > finalCase.x)
 		{
 			move.x = move.x - finalCase.x - offsetX;
 		}

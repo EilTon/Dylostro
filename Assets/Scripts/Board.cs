@@ -6,18 +6,23 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+	#region declarations public
 	public GameObject _prefabCase;
 	public GameObject _prefabPlayer;
 	public GameObject _popup;
+	public float _offsetX = 1.5f;
 	public List<ChallengeScriptableObject> _challenges;
 	public List<ConstraintScriptableObject> _constraints;
-	public List<GameObject> _players;
+	[HideInInspector]
 	public List<GameObject> _cases;
-	public float _offsetX = 1.5f;
+	#endregion
 
+	#region declarations private
+	List<GameObject> _players;
 	int _order = 0;
 	Camera _camera;
 	Vector3 _finalCase;
+	#endregion
 
 	private void Awake()
 	{
@@ -26,6 +31,7 @@ public class Board : MonoBehaviour
 		_camera = Camera.main;
 	}
 
+	#region Event Handler
 	void GenerateBoardEventHandler(object sender, GameManager.GenerateBoardEventArgs e) // fonction de l'event GenerateBoard
 	{
 		_players = new List<GameObject>();
@@ -43,16 +49,18 @@ public class Board : MonoBehaviour
 
 	void ThrowDiceEventHandler(object sender, ButtonEventManager.ThrowDiceEventArgs e)
 	{
-		float numberOfDice=0;
-		for (int i=0;i<e.numberThrowDice;++i)
+		float numberOfDice = 0;
+		for (int i = 0; i < e.numberThrowDice; ++i)
 		{
 			numberOfDice += UnityEngine.Random.Range(1, 7);
 		}
-		_players[_order].GetComponent<Player>().MovePlayer(numberOfDice,_finalCase,_offsetX);
+		_players[_order].GetComponent<Player>().MovePlayer(numberOfDice, _finalCase, _offsetX);
 		_camera.transform.position = new Vector3(_players[_order].transform.position.x, _players[_order].transform.position.y, _camera.transform.position.z);
 		CheckCase(_players[_order]);
 	}
+	#endregion
 
+	#region Helper
 	void CreateCase(int i)
 	{
 		GameObject cellGo = Instantiate(_prefabCase);
@@ -73,10 +81,39 @@ public class Board : MonoBehaviour
 
 	void CheckCase(GameObject player)
 	{
-		string textPopUp;
+		ChallengeScriptableObject challenge = null;
+		string textPopUp = "";
 		List<Player> players = new List<Player>();
-		ChallengeScriptableObject challenge = _cases.Where(x => x.transform.position.x == player.transform.position.x).FirstOrDefault().GetComponent<Case>()._challenge;
+		challenge = _cases.Where(x => x.transform.position.x == player.transform.position.x).FirstOrDefault().GetComponent<Case>()._challenge; // probleme quand on a 2 dé ou plus
 		players.Add(player.GetComponent<Player>());
+		textPopUp = CheckChallenge(challenge, textPopUp, player, players);
+		Popup popup = _popup.GetComponent<Popup>();
+		popup.SetConstraints(_constraints);
+		popup.SetChallenge(challenge);
+		popup.SetPlayers(players);
+		popup.Show(textPopUp);
+	}
+
+	ChallengeScriptableObject RandomChallenge()
+	{
+		bool isGood = true;
+		int randomNumber = UnityEngine.Random.Range(0, _challenges.Count);
+		while (isGood == true)
+		{
+			if (_challenges[randomNumber]._numberPlayer > _players.Count)
+			{
+				randomNumber = UnityEngine.Random.Range(0, _challenges.Count);
+			}
+			else
+			{
+				isGood = false;
+			}
+		}
+		return _challenges[randomNumber];
+	}
+
+	string CheckChallenge(ChallengeScriptableObject challenge, string textPopUp, GameObject player, List<Player> players)
+	{
 		if (challenge._numberPlayer > 1)
 		{
 			if (_order == _players.Count - 1)
@@ -102,28 +139,7 @@ public class Board : MonoBehaviour
 		{
 			++_order;
 		}
-		Popup popup = _popup.GetComponent<Popup>();
-		popup.SetConstraints(_constraints);
-		popup.SetChallenge(challenge);
-		popup.SetPlayers(players);
-		popup.Show(textPopUp);
+		return textPopUp;
 	}
-
-	ChallengeScriptableObject RandomChallenge()
-	{
-		bool isGood = true;
-		int randomNumber = UnityEngine.Random.Range(0, _challenges.Count);
-		while (isGood==true)
-		{
-			if (_challenges[randomNumber]._numberPlayer > _players.Count)
-			{
-				randomNumber = UnityEngine.Random.Range(0, _challenges.Count);
-			}
-			else
-			{
-				isGood = false;
-			}
-		}
-		return _challenges[randomNumber];
-	}
+	#endregion
 }

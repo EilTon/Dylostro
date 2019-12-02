@@ -1302,6 +1302,7 @@ MonoBehaviour:
   _prefabPlayer: {fileID: 1525164974070200205, guid: da5e9fd19d76d4d4abf423ccab2c1edc,
     type: 3}
   _popup: {fileID: 2131778116}
+  _offsetX: 1.5
   _challenges:
   - {fileID: 11400000, guid: 617fccaf11cdcfa42b5846691ca24628, type: 2}
   - {fileID: 11400000, guid: 0cb6638eb5b68e04eb8e5e3622f2ab82, type: 2}
@@ -1336,9 +1337,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4d175642b4766104db8b6a5a42ff887f, type: 2}
   - {fileID: 11400000, guid: 3c37711fbf22b374898c9e066d0796e6, type: 2}
   - {fileID: 11400000, guid: 70036df55786d5f4f95daeb8beb5f5ea, type: 2}
-  _players: []
   _cases: []
-  _offsetX: 1.5
 --- !u!1 &2131778116
 GameObject:
   m_ObjectHideFlags: 0
