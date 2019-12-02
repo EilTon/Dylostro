@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Subir02
   m_EditorClassIdentifier: 
   _category: Subir
-  _description: ', effectue une figure d''acrogym!'
+  _description: ', effectuent une figure d''acrogym!'
   _points: 3
   _validation: 0
   _numberPlayer: 2

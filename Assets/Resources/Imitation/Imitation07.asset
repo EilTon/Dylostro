@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Imitation07
   m_EditorClassIdentifier: 
   _category: Imitation
-  _description: ", commence une citation et choisis un co\xE9quipier pour la terminer!"
+  _description: ', commence la citation et laisse l''autre la terminer!'
   _points: 2
   _validation: 0
-  _numberPlayer: 1
+  _numberPlayer: 2
   _needToDrink: 3

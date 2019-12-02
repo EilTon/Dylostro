@@ -6,6 +6,7 @@ using UnityEngine;
 public class ButtonEventManager : MonoBehaviour
 {
 	public event EventHandler<ThrowDiceEventArgs> throwDice;
+	[Range(1,3)]
 	public int _howManyDice;
 
 	public class ThrowDiceEventArgs : EventArgs // parameter Event
