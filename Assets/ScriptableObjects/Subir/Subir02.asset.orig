@@ -16,5 +16,10 @@ MonoBehaviour:
   _description: ', effectue une figure d''acrogym!'
   _points: 3
   _validation: 0
-  _numberPlayer: 2
+<<<<<<< HEAD
+  _numberPlayer: 1
   _needToDrink: 2
+=======
+  _numberPlayer: 2
+  _needToDrink: 0
+>>>>>>> 2ab32f24b8ef87d860b4d6ecae68cac53b12ce66
