@@ -100,7 +100,7 @@ public class Board : MonoBehaviour
 		popup.SetPlayers(players);
 		popup.SetDiceButton(_diceButton);
 		popup.SetBoard(GetComponent<Board>());
-		popup.Show(textPopUp);
+		popup.Show(textPopUp, challenge._needToDrink.ToString(), challenge._points.ToString());
 	}
 
 	ChallengeScriptableObject RandomChallenge()

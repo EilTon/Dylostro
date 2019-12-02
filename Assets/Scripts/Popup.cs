@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Popup : MonoBehaviour
 {
 	public Text _textShow;
-
+	public Text _textDrink;
+	public Text _textPoint;
 
 	public event EventHandler<EventArgs> yesButton;
 	public event EventHandler<EventArgs> noButton;
@@ -26,11 +27,13 @@ public class Popup : MonoBehaviour
 		noButton += NoButtonEventHandler;
 	}
 
-	public void Show(string text)
+	public void Show(string textChallenge, string textDrink, string textPoint)
 	{
 		_popup = gameObject;
 		_popup.SetActive(true);
-		_textShow.text = text;
+		_textShow.text = textChallenge;
+		_textDrink.text = "A boire: " + textDrink;
+		_textPoint.text = "Point: "+ textPoint;
 	}
 
 	void YesButtonEventHandler(object sender, EventArgs e)
