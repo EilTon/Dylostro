@@ -18,3 +18,4 @@ MonoBehaviour:
   _points: 2
   _validation: 0
   _numberPlayer: 2
+  _needToDrink: 2
