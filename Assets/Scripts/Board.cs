@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Board : MonoBehaviour
 	public List<ConstraintScriptableObject> _constraints;
 	[HideInInspector]
 	public List<GameObject> _cases;
+
+	public Text _textPseudo;
+	public Text _textScore;
 	#endregion
 
 	#region declarations private
@@ -22,6 +26,8 @@ public class Board : MonoBehaviour
 	int _order = 0;
 	Camera _camera;
 	Vector3 _finalCase;
+	GameObject _diceButton;
+	
 	#endregion
 
 	private void Awake()
@@ -30,7 +36,6 @@ public class Board : MonoBehaviour
 		FindObjectOfType<ButtonEventManager>().throwDice += ThrowDiceEventHandler;
 		_camera = Camera.main;
 	}
-
 	#region Event Handler
 	void GenerateBoardEventHandler(object sender, GameManager.GenerateBoardEventArgs e) // fonction de l'event GenerateBoard
 	{
@@ -45,10 +50,12 @@ public class Board : MonoBehaviour
 		}
 		_finalCase = _cases.Last().transform.position;
 		_order = 0;
+		SetTextScoreAndPseudo();
 	}
 
 	void ThrowDiceEventHandler(object sender, ButtonEventManager.ThrowDiceEventArgs e)
 	{
+		_diceButton = e.buttonDice;
 		float numberOfDice = 0;
 		for (int i = 0; i < e.numberThrowDice; ++i)
 		{
@@ -91,6 +98,8 @@ public class Board : MonoBehaviour
 		popup.SetConstraints(_constraints);
 		popup.SetChallenge(challenge);
 		popup.SetPlayers(players);
+		popup.SetDiceButton(_diceButton);
+		popup.SetBoard(GetComponent<Board>());
 		popup.Show(textPopUp);
 	}
 
@@ -140,6 +149,11 @@ public class Board : MonoBehaviour
 			++_order;
 		}
 		return textPopUp;
+	}
+	public void SetTextScoreAndPseudo()
+	{
+		_textPseudo.text = _players[_order].GetComponent<Player>()._pseudo;
+		_textScore.text = _players[_order].GetComponent<Player>()._score.ToString() + " points";
 	}
 	#endregion
 }

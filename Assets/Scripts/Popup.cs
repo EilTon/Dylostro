@@ -7,19 +7,19 @@ using UnityEngine.UI;
 public class Popup : MonoBehaviour
 {
 	public Text _textShow;
-	
+
 
 	public event EventHandler<EventArgs> yesButton;
 	public event EventHandler<EventArgs> noButton;
 
-	
 	bool _isWin;
 
+	static GameObject _diceButton;
 	static GameObject _popup;
 	static List<Player> _players;
 	static List<ConstraintScriptableObject> _constraints;
 	static ChallengeScriptableObject _challenge;
-
+	static Board _board;
 	private void Awake()
 	{
 		yesButton += YesButtonEventHandler;
@@ -64,9 +64,9 @@ public class Popup : MonoBehaviour
 	public void YesNoButton()
 	{
 		_popup.SetActive(false);
-		foreach(Player player in _players)
+		foreach (Player player in _players)
 		{
-			if(_isWin)
+			if (_isWin)
 			{
 				player._score = player._score + _challenge._points;
 				Debug.Log(player._score);
@@ -76,12 +76,12 @@ public class Popup : MonoBehaviour
 				player._score = player._score - _challenge._points;
 				Debug.Log(player._score);
 			}
-			//int randomNumber = UnityEngine.Random.Range(0, _constraints.Count);
-			//player._constraints.Add(_constraints[randomNumber]._description);
 		}
+		_diceButton.SetActive(true);
+		_board.SetTextScoreAndPseudo();
 	}
 
-	public void SetPlayers(List<Player>players)
+	public void SetPlayers(List<Player> players)
 	{
 		_players = players;
 	}
@@ -94,5 +94,15 @@ public class Popup : MonoBehaviour
 	public void SetConstraints(List<ConstraintScriptableObject> constraints)
 	{
 		_constraints = constraints;
+	}
+
+	public void SetDiceButton(GameObject diceButton)
+	{
+		_diceButton = diceButton;
+	}
+
+	public void SetBoard(Board board)
+	{
+		_board = board;
 	}
 }

@@ -11,13 +11,15 @@ public class ButtonEventManager : MonoBehaviour
 	public class ThrowDiceEventArgs : EventArgs // parameter Event
 	{
 		public int numberThrowDice;
+		public GameObject buttonDice;
 	}
 
 	public void ThrowDice()
 	{
 		if (throwDice != null)
 		{
-			throwDice?.Invoke(this, new ThrowDiceEventArgs() { numberThrowDice = _howManyDice});
+			gameObject.SetActive(false);
+			throwDice?.Invoke(this, new ThrowDiceEventArgs() { numberThrowDice = _howManyDice, buttonDice = gameObject});
 		}
 	}
 }

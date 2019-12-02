@@ -13,4 +13,5 @@ public class ChallengeScriptableObject : ScriptableObject
 	public int _points;
 	public bool _validation;
 	public int _numberPlayer;
+	public int _needToDrink;
 }

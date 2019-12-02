@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
 	#region Declarations public
-
+	[Range(40,200)]
 	public int _numberCase;
 	public List<string> _pseudos;
 
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 	Board _board;
 
 	#endregion
-	
+
 	#region Event Args
 
 	public class GenerateBoardEventArgs : EventArgs // parameter Event
@@ -44,12 +44,21 @@ public class GameManager : MonoBehaviour
 			generateBoard?.Invoke(this, e);
 		}
 	}
-	
+
 	#endregion
 
 	private void Start()
 	{
-		
-		GenerateBoard(new GenerateBoardEventArgs(){ caseToGenerate = _numberCase, pseudosPlayer = _pseudos });
+		if (_pseudos.Count < 2 || _pseudos.Count > 9)
+		{
+			_pseudos = new List<string>();
+			for (int i = 0; i< 8; i++)
+			{
+				string pseudo = "Joueur " + (i + 1);
+				_pseudos.Add(pseudo);
+			}
+		}
+
+		GenerateBoard(new GenerateBoardEventArgs() { caseToGenerate = _numberCase, pseudosPlayer = _pseudos });
 	}
 }
