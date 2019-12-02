@@ -14,6 +14,7 @@ public class Board : MonoBehaviour
 	public List<GameObject> _players;
 	public List<GameObject> _cases;
 	public float _offsetX = 1.5f;
+
 	int _order = 0;
 	Camera _camera;
 	Vector3 _finalCase;
@@ -40,10 +41,14 @@ public class Board : MonoBehaviour
 		_order = 0;
 	}
 
-	void ThrowDiceEventHandler(object sender, EventArgs e)
+	void ThrowDiceEventHandler(object sender, ButtonEventManager.ThrowDiceEventArgs e)
 	{
-		float numberOfDice = UnityEngine.Random.Range(1, 7);
-		_players[_order].GetComponent<Player>().MovePlayer(numberOfDice,_finalCase);
+		float numberOfDice=0;
+		for (int i=0;i<e.numberThrowDice;++i)
+		{
+			numberOfDice += UnityEngine.Random.Range(1, 7);
+		}
+		_players[_order].GetComponent<Player>().MovePlayer(numberOfDice,_finalCase,_offsetX);
 		_camera.transform.position = new Vector3(_players[_order].transform.position.x, _players[_order].transform.position.y, _camera.transform.position.z);
 		CheckCase(_players[_order]);
 	}

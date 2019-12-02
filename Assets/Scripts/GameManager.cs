@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
 	#region Event Handler
 
 	public event EventHandler<GenerateBoardEventArgs> generateBoard; // call event (utiliser dans un autre script pour appel)
-	
 
 	#endregion
 

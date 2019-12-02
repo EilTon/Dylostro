@@ -20,12 +20,12 @@ public class Player : MonoBehaviour
 
 	#endregion
 
-	public void MovePlayer(float numberOfDice,Vector3 finalCase)
+	public void MovePlayer(float numberOfDice,Vector3 finalCase,float offsetX)
 	{
-		Vector3 move = new Vector3(transform.position.x + (numberOfDice * 1.5f), 1, transform.position.z);
+		Vector3 move = new Vector3(transform.position.x + (numberOfDice * offsetX), 1, transform.position.z);
 		if(move.x > finalCase.x)
 		{
-			move.x = move.x - finalCase.x - 1.5f;
+			move.x = move.x - finalCase.x - offsetX;
 		}
 		transform.position = move;
 	}
