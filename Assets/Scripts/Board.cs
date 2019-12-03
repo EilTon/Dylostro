@@ -6,6 +6,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = System.Object;
 
+public enum ECategory
+{
+	Alcool,
+	Chant,
+	Imitation,
+	Sport,
+	Subir
+}
+
 public class Board : MonoBehaviour
 {
 	#region declarations public
@@ -28,7 +37,7 @@ public class Board : MonoBehaviour
 	Camera _camera;
 	Vector3 _finalCase;
 	GameObject _diceButton;
-	
+
 	#endregion
 
 	private void Awake()
@@ -80,6 +89,24 @@ public class Board : MonoBehaviour
 		cellGo.transform.position = new Vector3(0 + (i * _offsetX), 0, 91);
 		Case cell = cellGo.GetComponent<Case>();
 		cell._challenge = RandomChallenge();
+		switch (cell._challenge._category)
+		{
+			case "Alcool":
+				cellGo.GetComponent<Renderer>().material.color = Color.yellow;
+				break;
+			case "Chant":
+				cellGo.GetComponent<Renderer>().material.color = Color.red;
+				break;
+			case "Imitation":
+				cellGo.GetComponent<Renderer>().material.color = Color.blue;
+				break;
+			case "Sport":
+				cellGo.GetComponent<Renderer>().material.color = Color.green;
+				break;
+			case "Subir":
+				cellGo.GetComponent<Renderer>().material.color = Color.white;
+				break;
+		}
 		_cases.Add(cellGo);
 	}
 
@@ -167,7 +194,7 @@ public class Board : MonoBehaviour
 	{
 		Object[] test;
 		test = Resources.LoadAll(folder, typeof(ChallengeScriptableObject));
-		foreach(Object obj in test)
+		foreach (Object obj in test)
 		{
 			_challenges.Add((ChallengeScriptableObject)obj);
 		}
