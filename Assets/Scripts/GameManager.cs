@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 	#region Declarations private
 
 	Board _board;
+	GeneratedSpin _spin;
 
 	#endregion
 
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
 	#region Event Handler
 
 	public event EventHandler<GenerateBoardEventArgs> generateBoard; // call event (utiliser dans un autre script pour appel)
+	public event EventHandler<GenerateBoardEventArgs> generatedSpin; 
 
 	#endregion
 
@@ -42,6 +44,14 @@ public class GameManager : MonoBehaviour
 		if (generateBoard != null)
 		{
 			generateBoard?.Invoke(this, e);
+		}
+	}
+
+	public void GeneratedSpin(GenerateBoardEventArgs e) 
+	{
+		if (generatedSpin != null)
+		{
+			generatedSpin?.Invoke(this, e);
 		}
 	}
 
@@ -59,6 +69,6 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
-		GenerateBoard(new GenerateBoardEventArgs() { caseToGenerate = _numberCase, pseudosPlayer = _pseudos });
+		GeneratedSpin(new GenerateBoardEventArgs() { caseToGenerate = _numberCase, pseudosPlayer = _pseudos });
 	}
 }

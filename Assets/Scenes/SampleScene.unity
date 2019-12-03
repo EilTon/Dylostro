@@ -489,7 +489,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1491,6 +1491,9 @@ GameObject:
   - component: {fileID: 1832361769}
   - component: {fileID: 1832361768}
   - component: {fileID: 1832361770}
+  - component: {fileID: 1832361771}
+  - component: {fileID: 1832361772}
+  - component: {fileID: 1832361773}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1560,6 +1563,52 @@ MonoBehaviour:
   _cases: []
   _textPseudo: {fileID: 908256606}
   _textScore: {fileID: 2068037409}
+--- !u!114 &1832361771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832361767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f028ae4ab432c2542a516c068397dbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 2633743711495686780, guid: 3dfd730abe2bc1c45a878959d3572ee5, type: 3}
+  _ball: {fileID: 7035946638073947330, guid: ae72bf3a33253264eb5dcf395a42f89f, type: 3}
+  _textPseudo: {fileID: 908256606}
+  _textScore: {fileID: 2068037409}
+--- !u!58 &1832361772
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832361767}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
+--- !u!114 &1832361773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832361767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378667755e23be7499018f8fdee753bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
+  _acceleration: -10
 --- !u!1 &2068037407
 GameObject:
   m_ObjectHideFlags: 0
